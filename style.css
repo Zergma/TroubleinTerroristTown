@@ -1,0 +1,248 @@
+/* Reset default spacing to make box-sizing predictable */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Make every elment use border-box so padding doesn't add to width */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Title */
+.title {
+    position: relative;
+    width: 100%;
+    height: 125px; /*could do 250px and change title h3 padding-top to 75 px*/
+    z-index: 10;
+    background-color: #570000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 4em;
+    -webkit-text-stroke: 4px black;
+    paint-order: stroke fill;
+    font-size: clamp(1rem, 8vw, 3em);
+}
+
+.title h3 {
+    color: rgb(177, 177, 177);
+    padding-top: 25px;
+    font-size: clamp(1rem, 0.5vw, 3rem);
+}
+
+.title h3, h1 {
+    margin: 0;
+    /*width: 90%;
+    max-width: 800px;
+    text-align: center;*/
+}
+
+/* Navbar */
+
+.navbar {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    z-index: 10;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    display: block;
+    color: gray;
+
+    padding: 15px 16px;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: rgb(242, 242, 242);
+    color: red;
+}
+
+.navbar a.active {
+    color: black;
+}
+
+/* Content */
+
+.page-container {
+    display: flex;
+    background-color: rgb(236, 236, 236);
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+
+    /*background-image: url("../images/background1.png");
+    background-repeat: no-repeat;
+    background-size: cover;*/
+
+    /*background: radial-gradient(circle at 20% 20%, #3a3a3a, transparent 40%),
+                radial-gradient(circle at 80% 30%, #1f1f1f, transparent 45%),
+                linear-gradient(135deg, #121212, #2a2a2a);*/
+}
+
+.content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    
+    background-color: white;
+    border-radius: 12px;
+
+    /* glassmorphism
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); */
+}
+
+h1, h2, h3, p, .section, .grid-container {
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+.content .mini {
+    padding-top: 0;
+    font-size: 0.5em;
+    vertical-align: top;
+}
+
+.content .paraphrase {
+    color: black;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.content h1 {
+    font-size: 1em;
+    padding-top: 30px;
+}
+
+.content h2 {
+    padding-top: 30px;
+    color: rgb(48, 48, 48);
+}
+
+.content h3 {
+    padding-bottom: none;
+    margin-bottom: 0;
+    color: rgb(48, 48, 48);
+}
+
+.content p {
+    color: rgb(86, 86, 86);
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+.content .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    position: relative;
+    gap: 0px;
+    align-items: start;
+}
+
+.grid-container .item {
+    align-self: start;
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+    border: 2px solid transparent;
+}
+
+.grid-container .item img {
+    max-width: 64px;
+}
+
+.grid-container .item .popup {
+    position: absolute;
+    top: 100%;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    display: none;
+    width: max-content;
+    max-width: calc(100vw-150px);
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+}
+
+.grid-container .item:hover {
+    border-color: #333;
+    /*border-color: transparent transparent #333 transparent;*/
+}
+
+.grid-container .item:hover .popup {
+    display: block;
+}
+
+/* The Little Arrow */
+.content .section .popup::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    border-width: 8px;
+    border-style: solid;
+
+    border-color: transparent transparent #333 transparent;
+}
+
+.grid-container p {
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.ttt-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.ttt-table th {
+    background-color: #333;
+    color: white;
+    text-align: left;
+    padding: 12px;
+}
+
+.ttt-table td {
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+}
+
+.ttt-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-wrapper {
+    padding-left: 75px;
+    padding-right: 75px;
+}
