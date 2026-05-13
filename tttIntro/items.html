@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<div class="title">
+    <h3>A Comprehensive Guide to the CONFUSING and UNFORGIVING</h3>
+    <h1>Trouble in Terrorist Town</h1>
+</div>
+
+<div class="navbar">
+    <a href="./main.html">Home</a>
+    <a class="active" href="./items.html">Items</a>
+    <a href="./strategy.html">Strategy</a>
+</div>
+</header>
+
+<div class="page-container">
+    <div class="content">
+        <h2>Top Tier Items in Utility</h2>
+        <h3>Traitor</h3>
+        <div class="grid-container">
+            <div class="item">
+                <img src="radar.webp" alt="radar_icon">
+                <div class="popup">
+                    <p>Radar: All the Traitor professionals use this S-tier item. It pings the location of every person still alive in the map about every 10 seconds.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="healthstation.webp" alt="medkit_icon">
+                <div class="popup">
+                    <p>Medkit: Just killed some Innocents in a messy manner? Down to 20 hp? It's time to heal up.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="homerunbat.png" alt="homerunbat_icon">
+                <div class="popup">
+                    <p>Home Run Bat: Works best on outdoor maps with no walls. Send your foes flying to the abyss.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="turtlenade.png" alt="turtlenade_icon">
+                <div class="popup">
+                    <p>Turtlenade: Got no clue how to sneakily kill the Innocents? Now it's time to </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="lightsaber.png" alt="lightsaber_icon">
+                <div class="popup">
+                    <p>Lightsaber: All the Traitor professionals use this S-tier item. It pings the location of every person still alive in the map about every 10 seconds.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Detective</h3>
+        <div class="grid-container">
+            <div class="item">
+                <img src="radar.webp" alt="radar_icon">
+                <div class="popup">
+                    <p>Radar: Every Detective needs this. It pings the location of every person still alive in the map about every 10 seconds.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="healthstation.webp" alt="healthstaton_icon">
+                <div class="popup">
+                    <p>Health Station: Has double the storage as the medkit, but is stationary.</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="homerunbat.png" alt="homerunbat_icon">
+                <div class="popup">
+                    <p>Home Run Bat: Yes, Detective gets this item as well. Batter up!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="secondchance.png" alt="secondchance_icon">
+                <div class="popup">
+                    <p>Second Chance: In a pinch and not sure what to buy? Buy second chance and you'll have a possibility of returning back to life!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="dancegun.png" alt="dancegun_icon">
+                <div class="popup">
+                    <p>Dance Gun: This is the only overpowered item I'm going to tell you guys about. The rest you'll have to find yourself.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelectorAll('.item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const popup = item.querySelector('.popup');
+            const content = document.querySelector('.content');
+            
+            // 1. Reset position to calculate fresh
+            popup.style.left = '0px'; 
+            popup.style.transform = 'none';
+
+            // 2. Get current positions
+            const popupRect = popup.getBoundingClientRect();
+            const contentRect = content.getBoundingClientRect();
+
+            // 3. Check for right-side overflow
+            if (popupRect.right > contentRect.right) {
+                // Calculate how many pixels the popup is sticking out
+                const overflow = popupRect.right - contentRect.right;
+                
+                // Shift the popup left by that exact amount
+                popup.style.left = `-${overflow}px`;
+            }
+
+            // 4. Optional: Check for left-side overflow (if icon is on the far left)
+            if (popupRect.left < contentRect.left) {
+                const overflowLeft = contentRect.left - popupRect.left;
+                popup.style.left = `${overflowLeft}px`;
+            }
+        });
+    });
+</script>
+</body>
+</html>
